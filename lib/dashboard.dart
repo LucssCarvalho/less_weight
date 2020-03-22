@@ -69,17 +69,19 @@ class _DashboardWeightState extends State<DashboardWeight> {
             ),
             onPressed: () {
               showModalBottomSheet(
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.vertical(
-                      top: Radius.circular(25.0),
-                    ),
-                  ),
-                  isScrollControlled: true,
-                  context: context,
-                  builder: (context) => Container(
-                        height: 400,
-                        child: FormAddWeight(),
-                      ));
+                backgroundColor: Colors.transparent,
+                shape: RoundedRectangleBorder(
+                    borderRadius:
+                        BorderRadius.vertical(top: Radius.circular(25.0))),
+                isScrollControlled: true,
+                context: context,
+                builder: (context) {
+                  return Container(
+                    margin: const EdgeInsets.only(top: 40.0),
+                    child: FormAddWeight(),
+                  );
+                },
+              );
             },
           )
         ],
@@ -120,7 +122,7 @@ class _DashboardWeightState extends State<DashboardWeight> {
         color: Colors.white,
         child: ListTile(
           title: Text(
-            _weightList[index]["title"],
+            _weightList[index]["weight"],
             style: TextStyle(fontSize: 22),
           ),
           subtitle: Text(_weightList[index]["data"].toString()),

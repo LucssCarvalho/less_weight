@@ -31,143 +31,147 @@ class _FormAddWeightState extends State<FormAddWeight> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(
-          'Coloque seu peso atual',
-          style: TextStyle(color: Colors.white, fontStyle: FontStyle.italic),
-        ),
-        centerTitle: true,
-      ),
-      body: Column(
-        children: <Widget>[
-          Expanded(
-            child: Form(
-              child: Column(
-                children: <Widget>[
-                  Padding(
-                    padding: const EdgeInsets.all(30.0),
-                    child: TextField(
-                      controller: _weightController,
-                      keyboardType: TextInputType.number,
-                      decoration: InputDecoration(
-                        labelText: "Seu peso atual",
-                        labelStyle: TextStyle(
-                          color: Colors.green,
+    return Container(
+      decoration: BoxDecoration(
+          borderRadius: BorderRadius.only(
+            topLeft: Radius.circular(20),
+            topRight: Radius.circular(20),
+          ),
+          color: Colors.white),
+      padding:
+          EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
+      child: Container(
+        height: 300,
+        child: Column(
+          children: <Widget>[
+            Expanded(
+              child: Form(
+                child: Column(
+                  children: <Widget>[
+                    Padding(
+                      padding: const EdgeInsets.all(30.0),
+                      child: TextField(
+                        controller: _weightController,
+                        keyboardType: TextInputType.number,
+                        decoration: InputDecoration(
+                          labelText: "Seu peso atual",
+                          labelStyle: TextStyle(
+                            color: Colors.green,
+                          ),
                         ),
                       ),
                     ),
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: <Widget>[
-                      Container(
-                        child: Column(
-                          children: <Widget>[
-                            Text(
-                              '😭',
-                              style: TextStyle(fontSize: 30),
-                            ),
-                            Radio(
-                              value: Status.veryBad,
-                              groupValue: _character,
-                              onChanged: (Status value) {
-                                setState(() {
-                                  _character = value;
-                                });
-                              },
-                            ),
-                          ],
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        Container(
+                          child: Column(
+                            children: <Widget>[
+                              Text(
+                                '😭',
+                                style: TextStyle(fontSize: 30),
+                              ),
+                              Radio(
+                                value: Status.veryBad,
+                                groupValue: _character,
+                                onChanged: (Status value) {
+                                  setState(() {
+                                    _character = value;
+                                  });
+                                },
+                              ),
+                            ],
+                          ),
                         ),
-                      ),
-                      Container(
-                        child: Column(
-                          children: <Widget>[
-                            Text(
-                              '😟',
-                              style: TextStyle(fontSize: 30),
-                            ),
-                            Radio(
-                              value: Status.bad,
-                              groupValue: _character,
-                              onChanged: (Status value) {
-                                setState(() {
-                                  _character = value;
-                                });
-                              },
-                            ),
-                          ],
+                        Container(
+                          child: Column(
+                            children: <Widget>[
+                              Text(
+                                '😟',
+                                style: TextStyle(fontSize: 30),
+                              ),
+                              Radio(
+                                value: Status.bad,
+                                groupValue: _character,
+                                onChanged: (Status value) {
+                                  setState(() {
+                                    _character = value;
+                                  });
+                                },
+                              ),
+                            ],
+                          ),
                         ),
-                      ),
-                      Container(
-                        child: Column(
-                          children: <Widget>[
-                            Text(
-                              '😐',
-                              style: TextStyle(fontSize: 30),
-                            ),
-                            Radio(
-                              value: Status.normal,
-                              groupValue: _character,
-                              onChanged: (Status value) {
-                                setState(() {
-                                  _character = value;
-                                });
-                              },
-                            ),
-                          ],
+                        Container(
+                          child: Column(
+                            children: <Widget>[
+                              Text(
+                                '😐',
+                                style: TextStyle(fontSize: 30),
+                              ),
+                              Radio(
+                                value: Status.normal,
+                                groupValue: _character,
+                                onChanged: (Status value) {
+                                  setState(() {
+                                    _character = value;
+                                  });
+                                },
+                              ),
+                            ],
+                          ),
                         ),
-                      ),
-                      Container(
-                        child: Column(
-                          children: <Widget>[
-                            Text(
-                              '🙂',
-                              style: TextStyle(fontSize: 30),
-                            ),
-                            Radio(
-                              value: Status.happy,
-                              groupValue: _character,
-                              onChanged: (Status value) {
-                                setState(() {
-                                  _character = value;
-                                });
-                              },
-                            ),
-                          ],
+                        Container(
+                          child: Column(
+                            children: <Widget>[
+                              Text(
+                                '🙂',
+                                style: TextStyle(fontSize: 30),
+                              ),
+                              Radio(
+                                value: Status.happy,
+                                groupValue: _character,
+                                onChanged: (Status value) {
+                                  setState(() {
+                                    _character = value;
+                                  });
+                                },
+                              ),
+                            ],
+                          ),
                         ),
-                      ),
-                      Container(
-                        child: Column(
-                          children: <Widget>[
-                            Text(
-                              '😍',
-                              style: TextStyle(fontSize: 30),
-                            ),
-                            Radio(
-                              value: Status.veryHappy,
-                              groupValue: _character,
-                              onChanged: (Status value) {
-                                setState(() {
-                                  _character = value;
-                                });
-                              },
-                            ),
-                          ],
+                        Container(
+                          child: Column(
+                            children: <Widget>[
+                              Text(
+                                '😍',
+                                style: TextStyle(fontSize: 30),
+                              ),
+                              Radio(
+                                value: Status.veryHappy,
+                                groupValue: _character,
+                                onChanged: (Status value) {
+                                  setState(() {
+                                    _character = value;
+                                  });
+                                },
+                              ),
+                            ],
+                          ),
                         ),
-                      ),
-                    ],
-                  ),
-                  RaisedButton(
-                      color: Colors.green,
-                      child: Text('ADD'),
-                      textColor: Colors.white,
-                      onPressed: _addTodo),
-                ],
+                      ],
+                    ),
+                    RaisedButton(
+                        color: Colors.green,
+                        child: Text('ADD'),
+                        textColor: Colors.white,
+                        onPressed: _addTodo),
+                  ],
+                ),
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
@@ -176,7 +180,7 @@ class _FormAddWeightState extends State<FormAddWeight> {
     if (_weightController.text.isEmpty) return;
     setState(() {
       Map<String, dynamic> newTodo = Map();
-      newTodo["title"] = _weightController.text;
+      newTodo["weight"] = _weightController.text;
       _weightController.text = "";
       newTodo["status"] = _character.toString();
       newTodo["data"] = formatDate(
