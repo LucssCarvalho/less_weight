@@ -53,10 +53,12 @@ class _DashboardWeightState extends State<DashboardWeight> {
         title: Text('Controle de peso'),
         actions: <Widget>[
           IconButton(
+            color: Colors.white,
             icon: Icon(
               Icons.whatshot,
               color: Colors.white,
             ),
+            onPressed: () {},
           )
         ],
       ),
@@ -64,61 +66,6 @@ class _DashboardWeightState extends State<DashboardWeight> {
         child: Center(
           child: Column(
             children: <Widget>[
-              Container(
-                child: Column(
-                  children: <Widget>[
-                    Container(
-                      alignment: AlignmentDirectional.center,
-                      decoration: BoxDecoration(
-                        gradient: LinearGradient(
-                          begin: Alignment.topRight,
-                          end: Alignment.bottomLeft,
-                          colors: [Colors.green, Colors.cyan[800]],
-                        ),
-                      ),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: <Widget>[
-                          Padding(
-                            padding: const EdgeInsets.only(top: 10.0),
-                            child: CircleAvatar(
-                              backgroundColor: Colors.white,
-                              radius: 70.0,
-                              child: Container(
-                                child: Column(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: <Widget>[
-                                    Text(
-                                      '65,0',
-                                      style: TextStyle(fontSize: 45),
-                                    ),
-                                    Text(
-                                      'Seu meta atual',
-                                      style: TextStyle(),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Container(
-                              child: Text(
-                                'Caroline Oliveira',
-                                style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 25,
-                                    decoration: TextDecoration.none),
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
-              ),
               Expanded(
                 child: ListView.builder(
                     reverse: true,
@@ -151,18 +98,19 @@ class _DashboardWeightState extends State<DashboardWeight> {
         color: Colors.white,
         child: ListTile(
           onTap: () {},
-          title: Text(
-            _weightList[index]["weight"],
-            style: TextStyle(fontSize: 22),
-          ),
-          subtitle: Text(_weightList[index]["data"].toString()),
-          leading: CircleAvatar(
-            backgroundColor: Colors.transparent,
-            child: Text(
-              emojiList[_weightList[index]["status"]],
-              style: TextStyle(fontSize: 30),
-            ),
-          ),
+          title: Text(_weightList.length.toString()),
+          // title: Text(
+          //   _weightList[index]["weight"],
+          //   style: TextStyle(fontSize: 22),
+          // ),
+          // subtitle: Text(_weightList[index]["data"].toString()),
+          // leading: CircleAvatar(
+          //   backgroundColor: Colors.transparent,
+          //   child: Text(
+          //     emojiList[_weightList[index]["status"]],
+          //     style: TextStyle(fontSize: 30),
+          //   ),
+          // ),
         ),
       ),
       onDismissed: (direction) {

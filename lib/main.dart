@@ -13,7 +13,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
-        primarySwatch: Colors.green,
+        primarySwatch: Colors.red,
       ),
       home: Tabbar(),
     );
@@ -64,7 +64,7 @@ class Tabbar extends StatelessWidget {
           indicatorWeight: 2,
           labelStyle: TextStyle(fontSize: 10),
           unselectedLabelColor: Colors.grey[800],
-          labelColor: Colors.greenAccent[700],
+          labelColor: Colors.redAccent[700],
           indicatorColor: Colors.transparent,
         ),
         body: TabBarView(children: [DashboardWeight(), ProfileScreen()]),

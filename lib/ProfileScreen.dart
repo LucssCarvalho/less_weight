@@ -1,5 +1,10 @@
+import 'dart:convert';
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:less_weight/add_weight.dart';
+import 'package:less_weight/edit_profile.dart';
+import 'package:path_provider/path_provider.dart';
 
 class ProfileScreen extends StatefulWidget {
   @override
@@ -9,6 +14,38 @@ class ProfileScreen extends StatefulWidget {
 class _ProfileScreenState extends State<ProfileScreen> {
   String name;
   String url;
+
+  List _profileList = [];
+
+  @override
+  void initState() {
+    super.initState();
+    _readData().then((data) {
+      setState(() {
+        _profileList = json.decode(data);
+      });
+    });
+  }
+
+  Future<File> _getFile() async {
+    final directory = await getApplicationDocumentsDirectory();
+    return File("${directory.path}/data.json");
+  }
+
+  Future<File> _saveData() async {
+    String data = json.encode(_profileList);
+    final file = await _getFile();
+    return file.writeAsString(data);
+  }
+
+  Future<String> _readData() async {
+    try {
+      final file = await _getFile();
+      return file.readAsString();
+    } catch (e) {
+      return null;
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +58,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
               height: 40,
               width: 150,
               decoration: BoxDecoration(
-                color: Colors.green[800],
+                color: Colors.red[800],
                 borderRadius: BorderRadius.circular(40),
               ),
               alignment: Alignment.center,
@@ -49,23 +86,109 @@ class _ProfileScreenState extends State<ProfileScreen> {
           )
         ],
       ),
-      body: Column(
-        children: <Widget>[
-          // Expanded(
-          //   child: GridView.count(
-          //     crossAxisCount: 2,
-          //     children: <Widget>[
-          //       reward(Colors.orange[300], Icons.person_pin,
-          //           'Conquistou meta semanal'),
-          //       reward(Colors.brown[300], Icons.restore_from_trash,
-          //           'Ficou uma semana sem comer lixo'),
-          //       reward(Colors.blue, Icons.person_pin_circle, 'Perfil completo'),
-          //       reward(Colors.cyan, Icons.calendar_today,
-          //           'Completou um mes no app'),
-          //     ],
-          //   ),
-          // )
-        ],
+      body: Center(
+        child: Column(
+          children: <Widget>[
+            Container(
+              child: Column(
+                children: <Widget>[
+                  Container(
+                    height: 250,
+                    alignment: AlignmentDirectional.center,
+                    decoration: BoxDecoration(
+                      gradient: LinearGradient(
+                        begin: Alignment.topRight,
+                        end: Alignment.bottomLeft,
+                        colors: [Colors.red[300], Colors.red[900]],
+                      ),
+                    ),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        Padding(
+                          padding: const EdgeInsets.only(top: 10.0),
+                          child: CircleAvatar(
+                            backgroundColor: Colors.white,
+                            radius: 70.0,
+                            child: Container(
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: <Widget>[
+                                  Text(
+                                    '62,0',
+                                    style: TextStyle(fontSize: 45),
+                                  ),
+                                  Text(
+                                    'Sem meta cadastrada',
+                                    textAlign: TextAlign.center,
+                                    style: TextStyle(),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Container(
+                            child: Text(
+                              'Caroline Oliveira',
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 25,
+                                  decoration: TextDecoration.none),
+                            ),
+                          ),
+                        ),
+                        Container(
+                          height: 30,
+                          child: RaisedButton(
+                            color: Colors.white,
+                            child: Text(
+                              'Editar Perfil',
+                              style: TextStyle(),
+                            ),
+                            onPressed: () {
+                              showModalBottomSheet(
+                                backgroundColor: Colors.transparent,
+                                shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.vertical(
+                                        top: Radius.circular(25.0))),
+                                isScrollControlled: true,
+                                context: context,
+                                builder: (context) {
+                                  return Container(
+                                    margin: const EdgeInsets.only(top: 40.0),
+                                    child: EditProfile(),
+                                  );
+                                },
+                              );
+                            },
+                          ),
+                        )
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            // Expanded(
+            //   child: GridView.count(
+            //     crossAxisCount: 2,
+            //     children: <Widget>[
+            //       reward(Colors.orange[300], Icons.person_pin,
+            //           'Conquistou meta semanal'),
+            //       reward(Colors.brown[300], Icons.restore_from_trash,
+            //           'Ficou uma semana sem comer lixo'),
+            //       reward(
+            //           Colors.blue, Icons.person_pin_circle, 'Perfil completo'),
+            //       reward(Colors.cyan, Icons.calendar_today,
+            //           'Completou um mes no app'),
+            //     ],
+            //   ),
+            // )
+          ],
+        ),
       ),
     );
   }
