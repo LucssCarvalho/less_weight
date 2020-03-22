@@ -188,6 +188,7 @@ class _FormAddWeightState extends State<FormAddWeight> {
 
       _weightList.add(newTodo);
       _saveData();
+      Navigator.pop(context);
     });
   }
 

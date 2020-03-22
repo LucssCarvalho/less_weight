@@ -52,39 +52,6 @@ class _DashboardWeightState extends State<DashboardWeight> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Controle de peso'),
-        actions: <Widget>[
-          MaterialButton(
-            child: Container(
-              height: 40,
-              width: 150,
-              decoration: BoxDecoration(
-                color: Colors.green[800],
-                borderRadius: BorderRadius.circular(40),
-              ),
-              alignment: Alignment.center,
-              child: Text(
-                'Add novo peso',
-                style: TextStyle(color: Colors.white),
-              ),
-            ),
-            onPressed: () {
-              showModalBottomSheet(
-                backgroundColor: Colors.transparent,
-                shape: RoundedRectangleBorder(
-                    borderRadius:
-                        BorderRadius.vertical(top: Radius.circular(25.0))),
-                isScrollControlled: true,
-                context: context,
-                builder: (context) {
-                  return Container(
-                    margin: const EdgeInsets.only(top: 40.0),
-                    child: FormAddWeight(),
-                  );
-                },
-              );
-            },
-          )
-        ],
       ),
       body: SafeArea(
         child: Center(
