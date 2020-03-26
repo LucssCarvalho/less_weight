@@ -22,11 +22,6 @@ class _EditProfileState extends State<EditProfile> {
   @override
   void initState() {
     super.initState();
-    _readData().then((data) {
-      setState(() {
-        _profileList = json.decode(data);
-      });
-    });
   }
 
   @override
@@ -67,7 +62,7 @@ class _EditProfileState extends State<EditProfile> {
                         decoration: InputDecoration(
                           labelText: "Seu nome",
                           labelStyle: TextStyle(
-                            color: Colors.green,
+                            color: Colors.red,
                           ),
                         ),
                       ),
@@ -80,16 +75,18 @@ class _EditProfileState extends State<EditProfile> {
                         decoration: InputDecoration(
                           labelText: "Sua meta",
                           labelStyle: TextStyle(
-                            color: Colors.green,
+                            color: Colors.red,
                           ),
                         ),
                       ),
                     ),
                     RaisedButton(
-                        color: Colors.green,
-                        child: Text('ADD'),
+                        color: Colors.red,
+                        child: Text('Editar'),
                         textColor: Colors.white,
-                        onPressed: _addTodo),
+                        onPressed: () {
+                          setState(() {});
+                        }),
                   ],
                 ),
               ),
@@ -98,40 +95,5 @@ class _EditProfileState extends State<EditProfile> {
         ),
       ),
     );
-  }
-
-  void _addTodo() {
-    if (_nameController.text.isEmpty) return;
-    setState(() {
-      Map<String, dynamic> newTodo = Map();
-      newTodo["weight"] = _nameController.text;
-      _nameController.text = "";
-      newTodo["goal"] = _goalController.text;
-      newTodo["data"] = formatDate(
-          DateTime.now(), [dd, '/', mm, '/', yyyy, ' | ', HH, ':', nn]);
-
-      _saveData();
-      Navigator.pop(context);
-    });
-  }
-
-  Future<File> _getFile() async {
-    final directory = await getApplicationDocumentsDirectory();
-    return File("${directory.path}/data.json");
-  }
-
-  Future<File> _saveData() async {
-    String data = json.encode(_profileList);
-    final file = await _getFile();
-    return file.writeAsString(data);
-  }
-
-  Future<String> _readData() async {
-    try {
-      final file = await _getFile();
-      return file.readAsString();
-    } catch (e) {
-      return null;
-    }
   }
 }
