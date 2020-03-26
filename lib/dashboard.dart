@@ -98,19 +98,18 @@ class _DashboardWeightState extends State<DashboardWeight> {
         color: Colors.white,
         child: ListTile(
           onTap: () {},
-          title: Text(_weightList.length.toString()),
-          // title: Text(
-          //   _weightList[index]["weight"],
-          //   style: TextStyle(fontSize: 22),
-          // ),
-          // subtitle: Text(_weightList[index]["data"].toString()),
-          // leading: CircleAvatar(
-          //   backgroundColor: Colors.transparent,
-          //   child: Text(
-          //     emojiList[_weightList[index]["status"]],
-          //     style: TextStyle(fontSize: 30),
-          //   ),
-          // ),
+          title: Text(
+            _weightList[index]["weight"],
+            style: TextStyle(fontSize: 22),
+          ),
+          subtitle: Text(_weightList[index]["data"].toString()),
+          leading: CircleAvatar(
+            backgroundColor: Colors.transparent,
+            child: Text(
+              emojiList[_weightList[index]["status"]],
+              style: TextStyle(fontSize: 30),
+            ),
+          ),
         ),
       ),
       onDismissed: (direction) {
