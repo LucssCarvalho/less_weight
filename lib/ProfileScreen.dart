@@ -12,7 +12,8 @@ class ProfileScreen extends StatefulWidget {
 }
 
 class _ProfileScreenState extends State<ProfileScreen> {
-  String name;
+  String name = 'sem nome cadastrado';
+  double meta = 0.0;
   String url;
 
   List _profileList = [];
@@ -115,7 +116,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: <Widget>[
                                   Text(
-                                    '62,0',
+                                    meta.toString(),
                                     style: TextStyle(fontSize: 45),
                                   ),
                                   Text(
@@ -132,7 +133,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           padding: const EdgeInsets.all(8.0),
                           child: Container(
                             child: Text(
-                              'Caroline Oliveira',
+                              name,
                               style: TextStyle(
                                   color: Colors.white,
                                   fontSize: 25,
